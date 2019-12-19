@@ -93,7 +93,7 @@ public class ObjetoVolador {
     //Getters para obtener información de posiciones y tamaños
 
     public float getPosX() {
-       return posX;
+        return posX;
     }
 
     public float getPosY() {

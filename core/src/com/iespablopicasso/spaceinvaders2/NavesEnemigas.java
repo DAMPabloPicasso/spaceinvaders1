@@ -50,15 +50,13 @@ public class NavesEnemigas extends NaveEspacial {
 
     //CONSTRUCTORES
     public NavesEnemigas() {
-        img2=null;
-        iPasos=0;
-
+        super();
     }
 
     public NavesEnemigas(float nuevaPosX,float nuevaPosY) {
-        //definimos un contador para el bucle
-        byte i ;
-        img2=NOMBRE_SPRITE;
+        super(nuevaPosX,nuevaPosY,VELOCIDAD_INICIAL_X,VELOCIDAD_INICIAL_Y,NOMBRE_SPRITE,NOMBRE_SPRITE_EXP);
+        img2 = new Texture(NOMBRE_SPRITE_2);
+
     }
 
 
@@ -66,49 +64,46 @@ public class NavesEnemigas extends NaveEspacial {
 
     //vamos a movernos automático
     public void moverseauto() {
-        super.moverse();
+        if (posX <= 0){
+            avanzar();
+            desplazarnos(true);
+        }
+        else if(posX >= JWindow.WIDTH){
+            avanzar();
+            desplazarnos(false);
+        }
 
     }
 
     //Con estos dos movimientos, las naves no son independientes, se dejan "ordenar" por su escuadrón
     //orden de movimiento horizontal
     public void desplazarnos(boolean bDerecha) {
-        posX+=VELOCIDAD_INICIAL_X;
+        if (bDerecha){
+            velY= 0;
+            super.moverse();
+        }
+        else {
+            posX -= velX;
+        }
     }
 
     //orden de movimiento vertical
     public void avanzar() {
-        posY+=VELOCIDAD_INICIAL_Y;
+        velX = 0;
+        super.moverse();
     }
 
 
     //Sobreescribimos pintarse para que maneje dos sprites en vez de uno
     @Override
     public void pintarse(SpriteBatch miSB) {
-        boolean AoB;
 
-    //si el contador ha llegado a 30 cambiamos de sprite y reiniciamos contador
-        if (iPasos=MAX_PASOS)  {
-            AoB=!AoB;
-            iPasos=0;
-        }
-
-    // cargamos un sprite u otro dependiendo de la variable AoB
-        if (AoB) {
-            miSB=img;
-        }    else {
-            miSB=img2;
-        }
-    // pintamos el sprite e incrementamos contador.
-        super.pintarse(miSB);
-        iPasos+=iPasos;
     }
 
     //Sobreescribimos dispose para eliminar nuestro segundo sprite/texture
     @Override
     public void dispose() {
-        super.dispose(img);
-        super.dispose(img2);
+
     }
 
 }
