@@ -42,8 +42,8 @@ public class NaveEspacial extends ObjetoVolador {
     public NaveEspacial(float nuevaPosX,float nuevaPosY,float nuevaVelX, float nuevaVelY,String nombreImg,String explosionString) {
         // creamos el objetoVolador padre con los nuevos parámetros
         super(nuevaPosX,nuevaPosY,nuevaVelX,nuevaVelY,nombreImg);
-        imgExplosion=explosionString;
-        explotar=explosionString;
+        imgExplosion=new Texture(explosionString);
+        explotar= false;
         pasos=PASOS_EXP;
     }
 
@@ -53,7 +53,9 @@ public class NaveEspacial extends ObjetoVolador {
     @Override
     public void pintarse(SpriteBatch miSB) {
         if (explotar) {
-            super.pintarse(imgExplosion);
+            miSB.begin();
+            miSB.draw(imgExplosion,posX,posY);
+            miSB.end();
         } else {
             super.pintarse(miSB);
         }
@@ -64,6 +66,7 @@ public class NaveEspacial extends ObjetoVolador {
     //texture disponible
     @Override
     public void dispose() {
+
         super.dispose();
     }
 

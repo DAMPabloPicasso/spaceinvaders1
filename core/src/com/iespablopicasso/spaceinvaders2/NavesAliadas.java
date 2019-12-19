@@ -1,6 +1,8 @@
 package com.iespablopicasso.spaceinvaders2;
 
 
+import javax.swing.JWindow;
+
 /**
  * Clase NavesAliadas. Representa a una nave principal. Estas naves pueden disparar
  * y también explotan si colisionan, y son manejadas por jugadores a través del teclado
@@ -37,12 +39,20 @@ public class NavesAliadas extends NaveEspacial {
     }
 
     public NavesAliadas(float nuevaPosX,float nuevaPosY, short anchoPantalla) {
-
+        nuevaPosX= JWindow.WIDTH/2;
+        nuevaPosY=0; //COMPROBAR SI NO SE VE LA NAVE ENTERA EN LA PANTALLA
     }
 
 
     //Resto de comportamiento
     public void moverse(EstadoTeclado et) {
+        if (et.isTeclaDer()){
+            posX += velX;
+        }
+
+        if (et.isTeclaIzq()){
+            posX -= velX;
+        }
 
     }
 }
