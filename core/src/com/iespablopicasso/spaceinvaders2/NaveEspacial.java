@@ -34,6 +34,7 @@ public class NaveEspacial extends ObjetoVolador {
 
     //CONSTRUCTORES
     public NaveEspacial() {
+        super();
         imgExplosion=null;
         explotar = false;
         pasos=0;
@@ -66,8 +67,8 @@ public class NaveEspacial extends ObjetoVolador {
     //texture disponible
     @Override
     public void dispose() {
-
         super.dispose();
+        this.dispose();
     }
 
     public void explota() {

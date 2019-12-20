@@ -37,4 +37,19 @@ public class DisparoAliado extends ObjetoVolador {
     }
 
     //Resto de comportamiento
+    @Override
+    public boolean colisiona(ObjetoVolador otro) {
+        boolean resultado;
+
+        //Columnas ¿he colisionado? y Filas ¿he chocado?
+
+        resultado= (otro.getAnchoDiv2() + anchoDiv2 >= Math.abs(otro.getPosX() - posX)) &&
+                (otro.getAltoDiv2() + altoDiv2 >= Math.abs(otro.getPosY() - posY));
+
+        if (resultado || posY<= JWindow.HEIGHT){
+            dispose();
+        }
+
+        return resultado;
+    }
 }

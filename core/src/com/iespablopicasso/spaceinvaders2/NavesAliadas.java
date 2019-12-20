@@ -39,6 +39,7 @@ public class NavesAliadas extends NaveEspacial {
     }
 
     public NavesAliadas(float nuevaPosX,float nuevaPosY, short anchoPantalla) {
+        super();
         nuevaPosX= JWindow.WIDTH/2;
         nuevaPosY=0; //COMPROBAR SI NO SE VE LA NAVE ENTERA EN LA PANTALLA
     }

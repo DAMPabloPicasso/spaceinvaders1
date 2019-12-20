@@ -97,13 +97,19 @@ public class NavesEnemigas extends NaveEspacial {
     //Sobreescribimos pintarse para que maneje dos sprites en vez de uno
     @Override
     public void pintarse(SpriteBatch miSB) {
+        Texture temporal;
 
+        temporal=img;
+        img=img2;
+        img2=temporal;
+        super.pintarse(miSB);
     }
 
     //Sobreescribimos dispose para eliminar nuestro segundo sprite/texture
     @Override
     public void dispose() {
-
+        this.dispose();
+        super.dispose();
     }
 
 }
